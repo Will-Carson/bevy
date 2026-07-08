@@ -1,0 +1,47 @@
+[package]
+name = "bevy_stats"
+version = "0.20.0-dev"
+edition = "2024"
+description = "A dependency-graph attribute/stat system for the Bevy game engine"
+homepage = "https://bevy.org"
+repository = "https://github.com/bevyengine/bevy"
+license = "MIT OR Apache-2.0"
+keywords = ["bevy", "gamedev", "stats", "attributes", "rpg"]
+
+[features]
+default = ["derive"]
+
+## Enables the `StatSync` derive macro for two-way component synchronization.
+derive = ["dep:bevy_stats_derive"]
+
+[dependencies]
+# bevy
+bevy_app = { path = "../bevy_app", version = "0.20.0-dev" }
+bevy_ecs = { path = "../bevy_ecs", version = "0.20.0-dev" }
+bevy_math = { path = "../bevy_math", version = "0.20.0-dev", default-features = false, features = [
+  "std",
+] }
+bevy_platform = { path = "../bevy_platform", version = "0.20.0-dev" }
+bevy_stats_derive = { path = "../bevy_stats_derive", version = "0.20.0-dev", optional = true }
+
+# other
+log = "0.4"
+
+[lib]
+bench = false
+
+[dev-dependencies]
+criterion = { version = "0.8.0", default-features = false, features = [
+  "cargo_bench_support",
+] }
+
+[[bench]]
+name = "stats"
+harness = false
+
+[lints]
+workspace = true
+
+[package.metadata.docs.rs]
+rustdoc-args = ["-Zunstable-options", "--generate-link-to-definition"]
+all-features = true

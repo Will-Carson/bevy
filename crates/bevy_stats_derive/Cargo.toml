@@ -1,0 +1,20 @@
+[package]
+name = "bevy_stats_derive"
+version = "0.20.0-dev"
+edition = "2024"
+description = "Derive macros for bevy_stats"
+homepage = "https://bevy.org"
+repository = "https://github.com/bevyengine/bevy"
+license = "MIT OR Apache-2.0"
+keywords = ["bevy"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = { version = "2.0", features = ["full"] }
+
+[lints]
+workspace = true
